@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ChangeCubeColor : MonoBehaviour
+public class ChangeReplicaCubeColor : MonoBehaviour
 {
     public GameObject Cubo;
     public GameObject Esfera;
@@ -12,9 +12,9 @@ public class ChangeCubeColor : MonoBehaviour
     {
         bool sphereStatus = Esfera.GetComponent<ChangeSphereColor>().Enabled;
         bool capsuleStatus = Capsula.GetComponent<ChangeCapsuleColor>().Enabled;
-        /* Se establece el estado del cubo en función de la conjunción (AND)
+        /* Se establece el estado del cubo en función de la disyunción (OR) 
          * de los estados de la esfera y la capsula */
-        Enabled = sphereStatus && capsuleStatus;
+        Enabled = sphereStatus || capsuleStatus;
 
         Color color = Enabled ? Color.white : Color.black;
         Cubo.GetComponent<MeshRenderer>().material.color = color;
